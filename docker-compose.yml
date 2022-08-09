@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  database:
+    container_name: db-driven
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: senha@01
+    restart: always
+    volumes:
+      - ./data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  api:
+    container_name: app
+    build: .
+    image: app
+    restart: always
+    volumes:
+      - .:/usr/app/
+    ports:
+      - "5000:5000"
+    depends_on:
+      - database
+    command: bash -c "npx prisma migrate dev && npm start"
