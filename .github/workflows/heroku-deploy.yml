@@ -15,15 +15,11 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: senha@01
     steps:
-     - name: Running test
-       run: npm i && npm run test
-     - name: Check out repository code
-       uses: actions/checkout@v3
-     - uses: akhileshns/heroku-deploy@v3.12.12
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           branch: "main"
-        run: npm run build
-    
