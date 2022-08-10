@@ -28,7 +28,7 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_POSTGRES_USER: "postgres"
-          envkey_POSTGRES_PASSWORD: "123456"
+          envkey_POSTGRES_PASSWORD: "senha@01"
           envkey_POSTGRES_DB: "students_test"
           envkey_DATABASE_URL: "postgres://postgres:1234@localhost:5432/students_test"
           file_name: .env.test
