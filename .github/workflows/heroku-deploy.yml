@@ -16,15 +16,9 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: senha@01
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-    steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Make envfile
+      - name: Create EnvFile
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_POSTGRES_USER: "postgres"
@@ -34,7 +28,7 @@ jobs:
           file_name: .env.test
       - name: Running test
         run: npm i && npm run test
-      - name:
+      - name: Build
         run: npm i && npm run build
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
