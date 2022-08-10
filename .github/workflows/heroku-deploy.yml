@@ -16,9 +16,10 @@ jobs:
         env:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: senha@01
+    steps:
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Create EnvFile
+      - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_POSTGRES_USER: "postgres"
@@ -29,7 +30,7 @@ jobs:
       - name: Running test
         run: npm i && npm run test
       - name: Build
-        run:  npm run build
+        run: npm run build
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
