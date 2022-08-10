@@ -29,8 +29,8 @@ jobs:
         with:
           envkey_POSTGRES_USER: "postgres"
           envkey_POSTGRES_PASSWORD: "123456"
-          envkey_POSTGRES_DB: "banco"
-          envkey_DATABASE_URL: "postgresql://postgres:localhost:5432/student__test"
+          envkey_POSTGRES_DB: "students_test"
+          envkey_DATABASE_URL: "postgres://postgres:1234@database:5432/students_test"
           file_name: .env.test
       - name: Running test
         run: npm i && npm run test
